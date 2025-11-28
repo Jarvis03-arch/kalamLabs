@@ -29,14 +29,21 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
+      {/* ⭐ MUST HAVE — Fixes 90% of mobile shrink issues */}
+      <head>
+        <meta
+          name="viewport"
+          content="width=device-width, initial-scale=1, maximum-scale=1"
+        />
+      </head>
+
       <body
         className={`${robotoMono.variable} ${spaceGrotesk.variable} antialiased`}
       >
-        {/* Header with transparent background */}
         <Header />
 
-        {/* Main content */}
         <main>{children}</main>
+
         <Footer />
       </body>
     </html>
