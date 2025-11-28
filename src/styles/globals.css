@@ -307,3 +307,36 @@
   animation-delay: 0.2s;
 }
 
+/* Prevent mobile zoom-out blank gap */
+html, body {
+  position: relative;
+  overflow-x: hidden !important;
+  max-width: 100% !important;
+  width: 100% !important;
+}
+
+/* Prevent GSAP / transforms from causing extra width */
+* {
+  box-sizing: border-box;
+}
+
+/* FORCE the body not to expand beyond screen width */
+body {
+  left: 0 !important;
+  right: 0 !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  transform: none !important;
+}
+
+/* Fix for sections that may become wider due to scaling */
+section, div, main {
+  max-width: 100vw !important;
+}
+
+/* Kill any element extending beyond viewport width */
+html {
+  overflow-x: hidden !important;
+}
+
+

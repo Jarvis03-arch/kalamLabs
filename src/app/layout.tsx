@@ -31,11 +31,12 @@ export default function RootLayout({
     <html lang="en">
       {/* ⭐ MUST HAVE — Fixes 90% of mobile shrink issues */}
       <head>
-        <meta
-          name="viewport"
-          content="width=device-width, initial-scale=1, maximum-scale=1"
-        />
-      </head>
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no"
+  />
+</head>
+
 
       <body
         className={`${robotoMono.variable} ${spaceGrotesk.variable} antialiased`}

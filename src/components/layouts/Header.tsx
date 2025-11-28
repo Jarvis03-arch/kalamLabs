@@ -3,7 +3,7 @@ import Link from "next/link";
 
 export default function Header() {
   return (
-    <header className="relative top-0 left-0 right-0 h-[5rem] md:h-[6rem] 2xl:h-[8rem] z-50 bg-transparent px-[1rem] py-[1rem] md:px-[3rem]">
+    <header className="relative top-0 left-0 right-0 h-[5rem] md:h-[6rem] 2xl:h-[8rem] z-50 bg-transparent  px-[1rem] py-[1rem] md:px-[3rem]">
       <div className="flex items-center justify-between h-full font-space-grotesk">
         <div className="h-full items-center">
           <Image
