@@ -1,9 +1,0 @@
-{
-  "redirects": [
-    {
-      "source": "/(.*)",
-      "destination": "https://kalamlabs.io/$1",
-      "permanent": true
-    }
-  ]
-}
