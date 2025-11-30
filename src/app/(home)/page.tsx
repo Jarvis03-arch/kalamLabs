@@ -10,15 +10,16 @@ import PerformanceCarousel from "@/components/sections/PerformanceCarousel";
 import StratosphereicAirships from "@/components/sections/StratosphereicAirships";
 import LogoMarquee from "@/components/shared/LogoMarquee";
 import ScrollPerformance from "@/components/shared/ScrollPerformance";
+import Script from "next/script";
 
 export default function page() {
   const performanceItems = [
     {
       cardHeaderText: "Stratospheric ISR UAV",
       cardBodyText:
-        "Conduct Stealth High Altitude Surveillance of Enemy Targets",
+        "Conduct stealth high altitude surveillance of enemy targets.",
       cardBodyTextList: [
-        "Loiters stealthily above Int flights at 50,000+ ft altitude",
+        "Loiters stealthily above INT flights at 50,000+ ft altitude",
         "AI-enabled EO/IR surveillance unit",
         "VTOL Landing in extreme high winds",
       ],
@@ -28,21 +29,21 @@ export default function page() {
     },
     {
       cardHeaderText: "Stratospheric Retrievable Radiosonde",
-      cardBodyText: "Autonomous High Altitude Weather Platform",
+      cardBodyText: "Autonomous high altitude weather platform.",
       cardBodyTextList: [
         "Replaces single-use traditional radiosonde",
-        "Enables Meteorology and Artillery Divisions to reuse radiosondes",
-        "Saves upto Rs.50,000/launch per day.",
+        "Reusable platform for Meteorology & Army Artillery",
+        "Saves up to ₹50,000 per launch per day",
       ],
       imageSrc: "/images/performanceImage2.webp",
     },
     {
       cardHeaderText: "Stratospheric Kamikaze UAV Swarm",
       cardBodyText:
-        "Stealth Swarms of UAVs descending upon adversaries from the Edge of Space",
+        "Stealth UAV swarms descending from the edge of space.",
       cardBodyTextList: [
-        "Deployed @ 100,000+ ft altitude",
-        "Stealth Radar-evasive strikes on key targets",
+        "Deployed at 100,000+ ft altitude",
+        "Radar-evasive strike capability",
       ],
       cardFooterText: "Vetted & Demonstrated for Indian Army",
       imageSrc: "/images/performanceImage3.webp",
@@ -51,6 +52,26 @@ export default function page() {
 
   return (
     <ScrollPerformance showFPS={process.env.NODE_ENV === "development"}>
+      {/* ⭐ Breadcrumb Schema */}
+      <Script
+        id="breadcrumbs-schema"
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "BreadcrumbList",
+            itemListElement: [
+              {
+                "@type": "ListItem",
+                position: 1,
+                name: "Home",
+                item: "https://kalamlabs.io",
+              },
+            ],
+          }),
+        }}
+      />
+
       <Hero />
       <LogoMarquee />
       <div className="md:px-[30px] 2xl:px-[44px]">

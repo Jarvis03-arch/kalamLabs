@@ -1,0 +1,15 @@
+{
+  "cache": {
+    "images": {
+      "sizes": [480, 720, 1200, 1600],
+      "formats": ["webp", "avif"]
+    },
+    "pages": {
+      "ttl": 86400
+    }
+  },
+  "compression": {
+    "brotli": true,
+    "gzip": true
+  }
+}
