@@ -6,7 +6,6 @@ import Footer from "@/components/layouts/Footer";
 import Script from "next/script";
 import FAQSchema from "@/components/SEO/FAQSchema";
 
-
 const robotoMono = Roboto_Mono({
   weight: "400",
   subsets: ["latin"],
@@ -43,10 +42,19 @@ export const metadata: Metadata = {
   "defense reconnaissance drone",
   "Indian military drone technology",
   ],
-  metadataBase: new URL("https://www.kalamlabs.io"),
+  
+   metadataBase: new URL("https://www.kalamlabs.io"),
+  // ✅ Full hreflang support
   alternates: {
     canonical: "https://www.kalamlabs.io",
+    languages: {
+      "en-IN": "https://www.kalamlabs.io",
+      en: "https://www.kalamlabs.io",
+      "x-default": "https://www.kalamlabs.io",
+    },
   },
+
+  // OG Metadata
   openGraph: {
     title: "Kalam Labs – High-Altitude Stratospheric UAV Systems",
     description:
@@ -64,12 +72,15 @@ export const metadata: Metadata = {
     locale: "en_IN",
     type: "website",
   },
+
   twitter: {
     card: "summary_large_image",
     site: "@kalamlabs",
     creator: "@kalamlabs",
     images: ["/og-image.jpg"],
   },
+
+  // Robots
   robots: {
     index: true,
     follow: true,
@@ -91,41 +102,43 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<meta name="author" content="Kalam Labs Aerospace Division" />
-<meta name="geo.region" content="IN-UP" />
-<meta name="geo.position" content="26.4499;80.3319" />
-<meta name="ICBM" content="26.4499, 80.3319" />
-
-
-  <link rel="alternate" href="https://kalamlabs.io" hreflang="en-in" />
-  <link rel="alternate" href="https://kalamlabs.io" hreflang="en" />
-  <link rel="alternate" href="https://kalamlabs.io" hreflang="x-default" />    
-
-<FAQSchema />
-        {/* ⭐ Mobile SEO Fix */}
+        {/* Basic SEO */}
         <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta name="author" content="Kalam Labs Aerospace Division" />
+        <meta name="geo.region" content="IN-UP" />
+        <meta name="geo.position" content="26.4499;80.3319" />
+        <meta name="ICBM" content="26.4499, 80.3319" />
 
-        {/* ⭐ Favicon */}
+        {/* hreflang links auto-handled but we keep manual too (OK) */}
+        <link rel="alternate" href="https://kalamlabs.io" hrefLang="en-IN" />
+        <link rel="alternate" href="https://kalamlabs.io" hrefLang="en" />
+        <link rel="alternate" href="https://kalamlabs.io" hrefLang="x-default" />
+
+        {/* FAQ Schema Component */}
+        <FAQSchema />
+
+        {/* Favicon */}
         <link rel="icon" href="/favicon.ico" />
 
-        {/* ⭐ Preconnect for faster fonts */}
+        {/* Preconnects – CWV optimization */}
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="" />
+        <link rel="preconnect" href="https://www.googletagmanager.com" />
+        <link rel="dns-prefetch" href="https://www.googletagmanager.com" />
 
-        {/* ⭐ GOOGLE SEARCH CONSOLE */}
+        {/* GOOGLE SEARCH CONSOLE */}
         <meta
           name="google-site-verification"
           content="wNzPicqBOc0abeeYNr_6M67NjngZF0gLt5NPP87ND5I"
         />
 
-        {/* ⭐ BING */}
+        {/* BING */}
         <meta name="msvalidate.01" content="YOUR_BING_CODE_HERE" />
 
-        {/* ⭐ YANDEX */}
+        {/* YANDEX */}
         <meta name="yandex-verification" content="YOUR_YANDEX_CODE_HERE" />
 
-        {/* ⭐ JSON-LD ORGANIZATION SCHEMA */}
+        {/* ORGANIZATION SCHEMA */}
         <Script
           id="organization-schema"
           type="application/ld+json"
@@ -136,8 +149,6 @@ export default function RootLayout({
               name: "Kalam Labs",
               url: "https://www.kalamlabs.io",
               logo: "https://www.kalamlabs.io/logo.png",
-              description:
-                "Kalam Labs builds high-altitude UAV platforms and radiosonde technologies for defense & meteorology.",
               sameAs: [
                 "https://www.linkedin.com/company/kalam-labs",
                 "https://twitter.com/kalamlabs",
@@ -146,7 +157,7 @@ export default function RootLayout({
           }}
         />
 
-        {/* ⭐ JSON-LD WEBSITE SCHEMA */}
+        {/* WEBSITE SCHEMA */}
         <Script
           id="website-schema"
           type="application/ld+json"
@@ -165,7 +176,7 @@ export default function RootLayout({
           }}
         />
 
-        {/* ⭐ JSON-LD BREADCRUMB SCHEMA */}
+        {/* BREADCRUMB SCHEMA */}
         <Script
           id="breadcrumb-schema"
           type="application/ld+json"
@@ -185,7 +196,7 @@ export default function RootLayout({
           }}
         />
 
-        {/* ⭐ Google Ads Tag */}
+        {/* Google Ads */}
         <Script
           async
           src="https://www.googletagmanager.com/gtag/js?id=AW-17766352420"
@@ -199,14 +210,17 @@ export default function RootLayout({
           `}
         </Script>
 
+        {/* CWV Optimization */}
+        <meta httpEquiv="Permissions-Policy" content="interest-cohort=()" />
+        <meta httpEquiv="X-DNS-Prefetch-Control" content="on" />
 
- {/* ⭐ Fix mobile zoom issues */}
+        {/* Disable mobile pinch zoom (your original setting) */}
         <meta
           name="viewport"
           content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no"
         />
 
-        {/* ⭐ Vercel Analytics */}
+        {/* Vercel Analytics */}
         <Script defer src="https://vercel.live/analytics/script.js" />
       </head>
 
