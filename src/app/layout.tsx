@@ -25,26 +25,26 @@ export const metadata: Metadata = {
     "Kalam Labs builds stratospheric UAVs, radiosondes, aerospace systems and high-altitude surveillance platforms operating at 50,000–100,000+ ft. Trusted by DRDO, Army & Air Force.",
   keywords: [
     "stratospheric UAV India",
-  "high altitude UAV",
-  "near space drone",
-  "Indian aerospace startup",
-  "reusable radiosonde",
-  "weather balloon alternative",
-  "ISR UAV India",
-  "high altitude surveillance",
-  "Indian defense drone startup",
-  "edge of space drone",
-  "meteorology UAV India",
-  "radiosonde India",
-  "UAV swarm India",
-  "stratospheric platform",
-  "100000 ft drone",
-  "defense reconnaissance drone",
-  "Indian military drone technology",
+    "high altitude UAV",
+    "near space drone",
+    "Indian aerospace startup",
+    "reusable radiosonde",
+    "weather balloon alternative",
+    "ISR UAV India",
+    "high altitude surveillance",
+    "Indian defense drone startup",
+    "edge of space drone",
+    "meteorology UAV India",
+    "radiosonde India",
+    "UAV swarm India",
+    "stratospheric platform",
+    "100000 ft drone",
+    "defense reconnaissance drone",
+    "Indian military drone technology",
   ],
-  
-   metadataBase: new URL("https://www.kalamlabs.io"),
-  // ✅ Full hreflang support
+
+  metadataBase: new URL("https://www.kalamlabs.io"),
+
   alternates: {
     canonical: "https://www.kalamlabs.io",
     languages: {
@@ -54,7 +54,6 @@ export const metadata: Metadata = {
     },
   },
 
-  // OG Metadata
   openGraph: {
     title: "Kalam Labs – High-Altitude Stratospheric UAV Systems",
     description:
@@ -80,7 +79,6 @@ export const metadata: Metadata = {
     images: ["/og-image.jpg"],
   },
 
-  // Robots
   robots: {
     index: true,
     follow: true,
@@ -92,6 +90,15 @@ export const metadata: Metadata = {
       "max-snippet": -1,
     },
   },
+
+  // single, canonical viewport definition
+  viewport: {
+    width: "device-width",
+    initialScale: 1,
+    maximumScale: 1,
+    minimumScale: 1,
+    userScalable: false,
+  },
 };
 
 export default function RootLayout({
@@ -102,19 +109,13 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
-        {/* Basic SEO */}
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        {/* Basic SEO extras */}
         <meta name="author" content="Kalam Labs Aerospace Division" />
         <meta name="geo.region" content="IN-UP" />
         <meta name="geo.position" content="26.4499;80.3319" />
         <meta name="ICBM" content="26.4499, 80.3319" />
 
-        {/* hreflang links auto-handled but we keep manual too (OK) */}
-        <link rel="alternate" href="https://kalamlabs.io" hrefLang="en-IN" />
-        <link rel="alternate" href="https://kalamlabs.io" hrefLang="en" />
-        <link rel="alternate" href="https://kalamlabs.io" hrefLang="x-default" />
-
-        {/* FAQ Schema Component */}
+        {/* FAQ Schema (ensure matching on-page content) */}
         <FAQSchema />
 
         {/* Favicon */}
@@ -132,16 +133,11 @@ export default function RootLayout({
           content="wNzPicqBOc0abeeYNr_6M67NjngZF0gLt5NPP87ND5I"
         />
 
-        {/* BING */}
-        <meta name="msvalidate.01" content="YOUR_BING_CODE_HERE" />
-
-        {/* YANDEX */}
-        <meta name="yandex-verification" content="YOUR_YANDEX_CODE_HERE" />
-
         {/* ORGANIZATION SCHEMA */}
         <Script
           id="organization-schema"
           type="application/ld+json"
+          strategy="afterInteractive"
           dangerouslySetInnerHTML={{
             __html: JSON.stringify({
               "@context": "https://schema.org",
@@ -161,6 +157,7 @@ export default function RootLayout({
         <Script
           id="website-schema"
           type="application/ld+json"
+          strategy="afterInteractive"
           dangerouslySetInnerHTML={{
             __html: JSON.stringify({
               "@context": "https://schema.org",
@@ -180,6 +177,7 @@ export default function RootLayout({
         <Script
           id="breadcrumb-schema"
           type="application/ld+json"
+          strategy="afterInteractive"
           dangerouslySetInnerHTML={{
             __html: JSON.stringify({
               "@context": "https://schema.org",
@@ -196,12 +194,12 @@ export default function RootLayout({
           }}
         />
 
-        {/* Google Ads */}
+        {/* Google Ads / gtag */}
         <Script
-          async
           src="https://www.googletagmanager.com/gtag/js?id=AW-17766352420"
+          strategy="afterInteractive"
         />
-        <Script id="google-ads-script">
+        <Script id="google-ads-script" strategy="afterInteractive">
           {`
             window.dataLayer = window.dataLayer || [];
             function gtag(){dataLayer.push(arguments);}
@@ -210,18 +208,15 @@ export default function RootLayout({
           `}
         </Script>
 
-        {/* CWV Optimization */}
+        {/* CWV / misc policies */}
         <meta httpEquiv="Permissions-Policy" content="interest-cohort=()" />
         <meta httpEquiv="X-DNS-Prefetch-Control" content="on" />
 
-        {/* Disable mobile pinch zoom (your original setting) */}
-        <meta
-          name="viewport"
-          content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no"
-        />
-
         {/* Vercel Analytics */}
-        <Script defer src="https://vercel.live/analytics/script.js" />
+        <Script
+          src="https://vercel.live/analytics/script.js"
+          strategy="afterInteractive"
+        />
       </head>
 
       <body
