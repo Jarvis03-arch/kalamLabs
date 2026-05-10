@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef } from "react";
 import Image from "next/image";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
@@ -30,7 +30,6 @@ export default function PerformanceCarousel({
 }: PerformanceCarouselProps) {
   const sectionRef = useRef<HTMLDivElement>(null);
   const contentRefs = useRef<(HTMLDivElement | null)[]>([]);
-  const [activeIndex, setActiveIndex] = useState(0);
 
   useEffect(() => {
     const section = sectionRef.current;
@@ -90,7 +89,6 @@ export default function PerformanceCarousel({
       );
 
       currentIndex = index;
-      setActiveIndex(index);
     };
 
     // Pin the entire section and track progress

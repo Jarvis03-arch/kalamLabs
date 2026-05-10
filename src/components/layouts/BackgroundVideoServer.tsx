@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useState, useSyncExternalStore } from "react";
 import CurtainOverlay from "../shared/CurtainOverlay";
 
 interface ResponsiveServerVideoProps {
@@ -12,6 +12,23 @@ interface ResponsiveServerVideoProps {
   onVideoReady?: () => void; // Callback when video/poster is ready
   priority?: boolean; // Whether this video should load with priority
 }
+
+const subscribeToHydration = () => () => {};
+const getHydratedSnapshot = () => true;
+const getServerHydratedSnapshot = () => false;
+
+const subscribeToViewport = (onStoreChange: () => void) => {
+  window.addEventListener("resize", onStoreChange);
+  window.addEventListener("orientationchange", onStoreChange);
+
+  return () => {
+    window.removeEventListener("resize", onStoreChange);
+    window.removeEventListener("orientationchange", onStoreChange);
+  };
+};
+
+const getIsMobileSnapshot = () => window.innerWidth < 768;
+const getServerIsMobileSnapshot = () => false;
 
 // Server component: Renders two videos and relies on CSS to show/hide per breakpoint
 export default function BackgroundVideoServer({
@@ -25,25 +42,16 @@ export default function BackgroundVideoServer({
 }: ResponsiveServerVideoProps) {
   const [isVideoReady, setIsVideoReady] = useState(false);
   const [showCurtain, setShowCurtain] = useState(true);
-  const [isMobile, setIsMobile] = useState(false);
-  const [isClient, setIsClient] = useState(false);
-
-  // Handle client-side hydration and screen size detection
-  useEffect(() => {
-    setIsClient(true);
-
-    const checkScreenSize = () => {
-      const newIsMobile = window.innerWidth < 768;
-      setIsMobile(newIsMobile);
-    };
-
-    checkScreenSize();
-    window.addEventListener("resize", checkScreenSize);
-
-    return () => {
-      window.removeEventListener("resize", checkScreenSize);
-    };
-  }, []);
+  const isClient = useSyncExternalStore(
+    subscribeToHydration,
+    getHydratedSnapshot,
+    getServerHydratedSnapshot
+  );
+  const isMobile = useSyncExternalStore(
+    subscribeToViewport,
+    getIsMobileSnapshot,
+    getServerIsMobileSnapshot
+  );
 
   // Handle video/poster loading immediately
   useEffect(() => {

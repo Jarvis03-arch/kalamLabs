@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Roboto_Mono, Space_Grotesk } from "next/font/google";
 import "../styles/globals.css";
 import Header from "@/components/layouts/Header";
@@ -98,15 +98,14 @@ export const metadata: Metadata = {
       "max-snippet": -1,
     },
   },
+};
 
-  // single, canonical viewport definition
-  viewport: {
-    width: "device-width",
-    initialScale: 1,
-    maximumScale: 1,
-    minimumScale: 1,
-    userScalable: false,
-  },
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+  maximumScale: 1,
+  minimumScale: 1,
+  userScalable: false,
 };
 
 export default function RootLayout({
