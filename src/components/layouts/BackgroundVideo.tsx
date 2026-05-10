@@ -86,6 +86,7 @@ export default function HeroBackgroundVideo({
             src={mobilePlaceholderImage}
             alt="Loading background"
             fill
+            sizes="100vw"
             className="object-cover object-center"
             priority
           />
@@ -103,6 +104,7 @@ export default function HeroBackgroundVideo({
             src={desktopPlaceholderImage}
             alt="Loading background"
             fill
+            sizes="100vw"
             className="object-cover object-center"
             priority
           />
@@ -122,6 +124,7 @@ export default function HeroBackgroundVideo({
               src={placeholderImage}
               alt="Loading background"
               fill
+              sizes="100vw"
               className="object-cover object-center"
               priority
             />

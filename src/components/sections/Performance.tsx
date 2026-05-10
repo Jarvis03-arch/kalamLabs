@@ -51,6 +51,7 @@ export default function Performance({
               fill
               src={imageSrc}
               alt="Stratospheric ISR UAV Aircraft"
+              sizes="(min-width: 768px) 50vw, 100vw"
               className="object-cover rounded-2xl"
             />
           </div>

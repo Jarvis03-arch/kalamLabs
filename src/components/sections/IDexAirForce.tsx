@@ -95,6 +95,7 @@ export default function IDexAirForce() {
           src="/images/droneImage.webp"
           alt="Supersonic Cruise"
           fill
+          sizes="100vw"
           className="object-contain"
           priority
         />

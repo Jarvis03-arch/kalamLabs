@@ -183,6 +183,7 @@ export default function PerformanceCarousel({
                     fill
                     src={item.imageSrc}
                     alt={item.cardHeaderText}
+                    sizes="(min-width: 768px) 50vw, 100vw"
                     className="object-cover transition-transform duration-700 hover:scale-105"
                   />
                 </div>

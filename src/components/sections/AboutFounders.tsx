@@ -11,6 +11,7 @@ export default function AboutFounders() {
               src="/images/foundersImage2.webp"
               alt="About Founders"
               fill
+              sizes="(min-width: 768px) 50vw, 100vw"
               className="object-cover"
             />
           </div>

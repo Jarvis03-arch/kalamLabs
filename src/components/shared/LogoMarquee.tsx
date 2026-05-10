@@ -62,6 +62,7 @@ export default function LogoMarquee({
               width={120}
               height={60}
               className="object-contain h-16 2xl:h-32 opacity-100 transition-all duration-300 hover:scale-110"
+              style={{ width: "auto" }}
             />
           </div>
         ))}
@@ -77,6 +78,7 @@ export default function LogoMarquee({
               width={120}
               height={60}
               className="object-contain md:mx-8 h-16 opacity-100 transition-all duration-300 hover:scale-110"
+              style={{ width: "auto" }}
             />
           </div>
         ))}

@@ -21,6 +21,7 @@ export default function Map() {
             src="/images/mapMobile.svg"
             alt="Map showing military deployment locations"
             fill
+            sizes="100vw"
             className="object-cover"
             priority
           />

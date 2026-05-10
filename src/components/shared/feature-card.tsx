@@ -70,6 +70,7 @@ export function FeatureCard({
                   fill
                   src={image}
                   alt={title}
+                  sizes="(min-width: 768px) 33vw, 100vw"
                   className="object-cover rounded-2xl"
                 />
               </div>
